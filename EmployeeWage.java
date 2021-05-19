@@ -1,18 +1,27 @@
 package com.employeeWage;
 
 public class EmployeeWage {
-		public void Attendance()
-		{
+		public int Attendance(){
 			int present=1;
+			int flag;
 			double observed= Math.floor(Math.random()*10)%2;
-			if(present==observed)
-		        System.out.println("Employee is present");
+			if(present==observed) 
+				flag=1;
 			else
-		        System.out.println("Employee is absent");
+		        flag=0;
+			return flag;
 		}
-		public static void main(String[] args)
-		{
+		public int dailyEmployeeWage() {
+			int dailyWage=8*20;
+			int presence=Attendance();
+			if(presence==1)
+				return dailyWage;
+			else
+				return 0;
+		}
+		
+		public static void main(String[] args){
 			EmployeeWage ew= new EmployeeWage();
-			ew.Attendance();
+			System.out.println(ew.dailyEmployeeWage()); 
 		}
 }
