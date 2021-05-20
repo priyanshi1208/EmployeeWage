@@ -1,27 +1,55 @@
 package com.employeeWage;
 
+import java.util.*;
+
 public class EmployeeWage {
-		public int Attendance(){
-			int present=1;
-			int flag;
-			double observed= Math.floor(Math.random()*10)%2;
-			if(present==observed) 
-				flag=1;
-			else
-		        flag=0;
-			return flag;
+	public int Attendance() {
+		int present = 1;
+		int count = 0;
+		for (int i = 0; i < 20; i++) {
+			int observed = new Random().nextInt(2);
+			switch (observed) {
+			case 0:
+				break;
+			case 1:
+				count++;
+				break;
+			}
 		}
-		public int dailyEmployeeWage() {
-			int dailyWage=8*20;
-			int presence=Attendance();
-			if(presence==1)
-				return dailyWage;
-			else
-				return 0;
+		return count;
+
+	}
+
+	public int dailyEmployeeWage() {
+		int dailyWorkHour = 8;
+		return dailyWorkHour;
+	}
+
+	public int partTimeEmployee() {
+		int partTimeWorkHours = 4;
+		return partTimeWorkHours;
+	}
+
+	public int monthlyWage() {
+		int checkEmployeeType = new Random().nextInt(2);
+		//System.out.println(checkEmployeeType);
+		int presence = Attendance();
+		//System.out.println(presence);
+		int monthlyWage = 0;
+		switch (checkEmployeeType) {
+		case 0:
+			monthlyWage = presence * dailyEmployeeWage();
+			break;
+		case 1:
+			monthlyWage = presence * partTimeEmployee();
+			break;
 		}
-		
-		public static void main(String[] args){
-			EmployeeWage ew= new EmployeeWage();
-			System.out.println(ew.dailyEmployeeWage()); 
-		}
+		return monthlyWage;
+
+	}
+
+	public static void main(String[] args) {
+		EmployeeWage ew = new EmployeeWage();
+		System.out.println(ew.monthlyWage());
+	}
 }
