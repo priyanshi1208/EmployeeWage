@@ -4,9 +4,9 @@ import java.util.*;
 
 public class EmployeeWage {
 	public int Attendance() {
-		int present = 1;
 		int count = 0;
-		for (int i = 0; i < 20; i++) {
+		int maxWorkingDays=20;
+		for (int i = 0; i <maxWorkingDays; i++) {
 			int observed = new Random().nextInt(2);
 			switch (observed) {
 			case 0:
